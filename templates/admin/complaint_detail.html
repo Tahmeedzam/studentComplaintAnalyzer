@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Complaint #{{ complaint.id }} - Admin{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+    <div>
+        <div class="d-flex align-items-center gap-2">
+            <a href="{{ url_for('admin.complaints') }}" class="btn btn-sm btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>Back to Complaints
+            </a>
+            <h2 class="fw-bold mb-0">Complaint #{{ complaint.id }}</h2>
+        </div>
+        <span class="text-muted small">Submitted by <strong>{{ complaint.student.name }}</strong> ({{ complaint.student.email }}) on {{ complaint.created_at.strftime('%B %d, %Y at %I:%M %p') }}</span>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+        <span class="badge {{ complaint.priority|priority_badge }} px-3 py-2 fs-6">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i>Priority: {{ complaint.priority }}
+        </span>
+        <span class="badge {{ complaint.status|status_badge }} px-3 py-2 fs-6">
+            {{ complaint.status }}
+        </span>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Main Content & Triage Form -->
+    <div class="col-lg-7">
+        <!-- Complaint Text Box -->
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-white py-3">
+                <h5 class="fw-bold mb-0 text-dark">{{ complaint.title }}</h5>
+            </div>
+            <div class="card-body p-4">
+                <h6 class="text-muted small fw-bold text-uppercase">Student Description</h6>
+                <div class="p-3 bg-light rounded text-dark mb-3" style="white-space: pre-line; line-height: 1.6;">
+                    {{ complaint.description }}
+                </div>
+                
+                <div class="row g-2 text-muted small border-top pt-2">
+                    <div class="col-sm-6">
+                        <strong>Student Name:</strong> {{ complaint.student.name }}
+                    </div>
+                    <div class="col-sm-6">
+                        <strong>Student Email:</strong> {{ complaint.student.email }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Administrative Action & Response Form -->
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-light py-3">
+                <h5 class="fw-bold mb-0 text-dark"><i class="bi bi-pencil-square text-primary me-2"></i>Administration Triage & Response</h5>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('admin.update_complaint', complaint_id=complaint.id) }}">
+                    <div class="row g-3 mb-3">
+                        <!-- Update Status -->
+                        <div class="col-md-6">
+                            <label for="status" class="form-label fw-semibold small">Resolution Status</label>
+                            <select class="form-select" id="status" name="status" required>
+                                <option value="Pending" {% if complaint.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                <option value="In Progress" {% if complaint.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                                <option value="Resolved" {% if complaint.status == 'Resolved' %}selected{% endif %}>Resolved</option>
+                                <option value="Rejected" {% if complaint.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+                            </select>
+                        </div>
+
+                        <!-- Assign Department -->
+                        <div class="col-md-6">
+                            <label for="department" class="form-label fw-semibold small">Assigned Department</label>
+                            <select class="form-select" id="department" name="department" required>
+                                {% for dept in departments %}
+                                    <option value="{{ dept }}" {% if complaint.department == dept %}selected{% endif %}>{{ dept }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Official Admin Response -->
+                    <div class="mb-4">
+                        <label for="admin_response" class="form-label fw-semibold small">Official Resolution / Response Note</label>
+                        <textarea class="form-control" id="admin_response" name="admin_response" rows="4" placeholder="Enter resolution details, actions taken, or instructions for the student...">{{ complaint.admin_response or '' }}</textarea>
+                        <div class="form-text">This response will be visible to the student on their complaint tracking page.</div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="{{ url_for('admin.complaints') }}" class="btn btn-outline-secondary">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary px-4">
+                            <i class="bi bi-check-circle me-1"></i>Save Changes & Notify
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- NLP Analysis Insights Card -->
+    <div class="col-lg-5">
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-primary text-white py-3 d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-cpu-fill fs-5"></i>
+                    <h5 class="fw-bold mb-0">NLP Analysis</h5>
+                </div>
+                <span class="badge bg-white text-primary">Confidence: {{ complaint.confidence }}%</span>
+            </div>
+
+            <div class="card-body p-4">
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item px-0 py-2 d-flex justify-content-between align-items-center">
+                        <span class="text-muted small"><i class="bi bi-folder2-open me-2 text-primary"></i>ML Category</span>
+                        <span class="fw-bold text-dark">{{ complaint.category }}</span>
+                    </li>
+
+                    <li class="list-group-item px-0 py-2 d-flex justify-content-between align-items-center">
+                        <span class="text-muted small"><i class="bi bi-building me-2 text-primary"></i>Suggested Dept</span>
+                        <span class="fw-bold text-dark">{{ complaint.department }}</span>
+                    </li>
+
+                    <li class="list-group-item px-0 py-2 d-flex justify-content-between align-items-center">
+                        <span class="text-muted small"><i class="bi bi-emoji-smile me-2 text-primary"></i>Sentiment Score</span>
+                        <div>
+                            <span class="badge {{ complaint.sentiment|sentiment_badge }} me-1">{{ complaint.sentiment }}</span>
+                            <span class="small text-muted">({{ complaint.sentiment_score }})</span>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item px-0 py-2 d-flex justify-content-between align-items-center">
+                        <span class="text-muted small"><i class="bi bi-exclamation-triangle me-2 text-primary"></i>Priority Level</span>
+                        <span class="badge {{ complaint.priority|priority_badge }} px-2 py-1">{{ complaint.priority }}</span>
+                    </li>
+                </ul>
+
+                <!-- Extracted Keywords -->
+                <div class="mb-3">
+                    <span class="text-muted small fw-bold d-block mb-2"><i class="bi bi-tags me-1 text-primary"></i>Extracted Keywords:</span>
+                    <div>
+                        {% for kw in complaint.keywords_list %}
+                            <span class="keyword-tag">{{ kw }}</span>
+                        {% else %}
+                            <span class="text-muted small">None extracted</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="p-3 bg-light rounded small border">
+                    <div class="fw-bold text-dark mb-1"><i class="bi bi-shield-check text-primary me-1"></i>Auto-Triage Rule:</div>
+                    <div class="text-muted">
+                        {% if complaint.priority == 'High' %}
+                            Marked as <strong>High Priority</strong> due to urgent keywords or severe negative polarity in critical facilities.
+                        {% elif complaint.priority == 'Medium' %}
+                            Marked as <strong>Medium Priority</strong> due to standard operational issues or moderate negative sentiment.
+                        {% else %}
+                            Marked as <strong>Low Priority</strong> due to general suggestions, neutral inquiries, or minor feedback.
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

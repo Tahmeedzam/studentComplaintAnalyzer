@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Submit New Complaint - Smart Student Complaint Analyzer{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-md border-0 mb-4">
+            <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-pencil-square text-primary fs-4"></i>
+                    <div>
+                        <h4 class="fw-bold mb-0">Submit New Grievance</h4>
+                        <span class="text-muted small">NLP algorithms will automatically categorize, analyze sentiment, and assign priority.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body p-4">
+                <form id="new-complaint-form" method="POST" action="{{ url_for('student.new_complaint') }}">
+                    <!-- Complaint Title -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-semibold">Complaint Subject / Title <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="title" name="title" value="{{ title or '' }}" placeholder="e.g. Wi-Fi not working on second floor of library" required autofocus>
+                        <div class="form-text">Provide a concise, specific summary of your grievance.</div>
+                    </div>
+
+                    <!-- Location / Department (Optional) -->
+                    <div class="mb-3">
+                        <label for="location" class="form-label fw-semibold">Location / Room Number / Campus Area <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" id="location" name="location" value="{{ location or '' }}" placeholder="e.g. Room 204, Library 2nd Floor, Girls Hostel Block B">
+                    </div>
+
+                    <!-- Detailed Description -->
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <label for="description" class="form-label fw-semibold mb-0">Detailed Description <span class="text-danger">*</span></label>
+                            <span id="char-count" class="text-muted small">0 characters</span>
+                        </div>
+                        <textarea class="form-control" id="description" name="description" rows="5" placeholder="Explain the problem in detail. Mention duration, impact, and any urgency..." required>{{ description or '' }}</textarea>
+                        <div class="form-text">Include details such as when the issue started and how it impacts you.</div>
+                    </div>
+
+                    <!-- Real-Time NLP Analysis Preview Card -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fw-semibold text-dark small"><i class="bi bi-cpu text-primary me-1"></i>Live NLP Pre-Analysis</span>
+                            <button type="button" id="btn-nlp-preview" class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-magic me-1"></i>Test NLP Preview
+                            </button>
+                        </div>
+
+                        <!-- Loading Indicator -->
+                        <div id="nlp-loading-spinner" class="text-center py-3 bg-light rounded" style="display: none;">
+                            <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
+                            <span class="small text-muted fw-semibold">Analyzing complaint using NLP...</span>
+                        </div>
+
+                        <!-- Analysis Result Box -->
+                        <div id="nlp-live-preview-container" style="display: none;"></div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                        <a href="{{ url_for('student.dashboard') }}" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle me-1"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary px-4 py-2 fw-semibold shadow-sm">
+                            <i class="bi bi-send-fill me-1"></i>Analyze & Submit Complaint
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}Student Dashboard - Smart Student Complaint Analyzer{% endblock %}
+
+{% block content %}
+<!-- Welcome & Quick Action Header -->
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+    <div>
+        <h2 class="fw-bold mb-1">Student Dashboard</h2>
+        <p class="text-muted small mb-0">Track grievance status, view NLP classification results, and submit new issues.</p>
+    </div>
+    <a href="{{ url_for('student.new_complaint') }}" class="btn btn-primary shadow-sm">
+        <i class="bi bi-plus-circle-fill me-1"></i>Submit New Complaint
+    </a>
+</div>
+
+<!-- 4 Overview Metric Cards -->
+<div class="row g-3 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="card stat-card h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase">Total Complaints</span>
+                    <h3 class="fw-bold text-dark mt-1 mb-0">{{ total }}</h3>
+                </div>
+                <div class="stat-icon-box bg-primary-light text-primary">
+                    <i class="bi bi-journal-bookmark-fill"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="card stat-card stat-pending h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase">Pending</span>
+                    <h3 class="fw-bold text-dark mt-1 mb-0">{{ pending }}</h3>
+                </div>
+                <div class="stat-icon-box bg-warning-light text-warning">
+                    <i class="bi bi-clock-history"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="card stat-card stat-progress h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase">In Progress</span>
+                    <h3 class="fw-bold text-dark mt-1 mb-0">{{ in_progress }}</h3>
+                </div>
+                <div class="stat-icon-box bg-info-light text-info">
+                    <i class="bi bi-gear-wide-connected"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="card stat-card stat-resolved h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase">Resolved</span>
+                    <h3 class="fw-bold text-dark mt-1 mb-0">{{ resolved }}</h3>
+                </div>
+                <div class="stat-icon-box bg-success-light text-success">
+                    <i class="bi bi-check2-circle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Complaints Table -->
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+        <h5 class="fw-bold mb-0"><i class="bi bi-list-task text-primary me-2"></i>Recent Complaints</h5>
+        <a href="{{ url_for('student.complaints') }}" class="btn btn-sm btn-outline-primary">
+            View All ({{ total }})
+        </a>
+    </div>
+
+    <div class="card-body p-0">
+        {% if recent_complaints %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-3">Complaint</th>
+                            <th>Category</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th class="text-end pe-3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for complaint in recent_complaints %}
+                            <tr>
+                                <td class="ps-3">
+                                    <div class="fw-semibold text-dark">{{ complaint.title }}</div>
+                                    <div class="small text-muted text-truncate" style="max-width: 280px;">
+                                        {{ complaint.description }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border">
+                                        <i class="bi bi-folder2 me-1"></i>{{ complaint.category }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge {{ complaint.priority|priority_badge }}">
+                                        {{ complaint.priority }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge {{ complaint.status|status_badge }}">
+                                        {{ complaint.status }}
+                                    </span>
+                                </td>
+                                <td class="small text-muted">
+                                    {{ complaint.created_at.strftime('%b %d, %Y') }}
+                                </td>
+                                <td class="text-end pe-3">
+                                    <a href="{{ url_for('student.complaint_detail', complaint_id=complaint.id) }}" class="btn btn-sm btn-light border">
+                                        View Details <i class="bi bi-arrow-right ms-1"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="text-center py-5">
+                <i class="bi bi-inbox text-muted display-4 mb-3 d-block"></i>
+                <h5 class="fw-bold text-dark">No complaints submitted yet</h5>
+                <p class="text-muted small">When you submit an issue, it will be automatically analyzed by NLP and listed here.</p>
+                <a href="{{ url_for('student.new_complaint') }}" class="btn btn-primary btn-sm mt-2">
+                    <i class="bi bi-plus-circle me-1"></i>Submit Your First Complaint
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

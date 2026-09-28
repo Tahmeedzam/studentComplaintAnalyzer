@@ -1,0 +1,497 @@
+text,category
+The professor for Data Structures is skipping important syllabus topics without explaining.,Academics
+Lab faculty does not provide sufficient assistance during practical programming sessions.,Academics
+Our physics lecture was canceled without any prior notification or reschedule plan.,Academics
+The syllabus for artificial intelligence is outdated and does not cover modern deep learning frameworks.,Academics
+Assignments are graded very late and feedback is not provided before unit exams.,Academics
+Professor arrived 40 minutes late to the lecture and finished without answering queries.,Academics
+Course materials and lecture slides are not uploaded to the university portal.,Academics
+The teacher is constantly rushing through complex mathematical concepts.,Academics
+Attendance was marked incorrectly for our elective subject even though we were present.,Academics
+We have not been assigned a project guide for our final semester capstone project.,Academics
+Continuous assessment marks have not been published despite repeated requests to the department.,Academics
+The guest lectures promised in the curriculum have not been scheduled this term.,Academics
+Faculty members do not respond to student emails regarding homework doubts.,Academics
+Tutorial batches are overcrowded with more than 60 students per classroom.,Academics
+The chemistry lab equipment is broken and experiments cannot be performed accurately.,Academics
+Elective course selection was closed prematurely without notifying the students.,Academics
+Textbooks recommended in the syllabus are out of print and unavailable in the college.,Academics
+The grading system for the mid-term project was arbitrary and lacked clear rubrics.,Academics
+Teaching assistant is unqualified and unable to solve basic algorithmic problems.,Academics
+No remedial classes or doubt solving sessions are conducted for difficult subjects.,Academics
+Internal assessment question paper contained questions outside the prescribed syllabus.,Academics
+Lecturer does not use a microphone and is completely inaudible from the back rows.,Academics
+Our programming lab computers run obsolete software compilers from 2010.,Academics
+Academic calendar changes were announced just one day before assignment submissions.,Academics
+The department has not arranged mandatory industrial visits as outlined in the course brochure.,Academics
+There is significant scheduling overlap between two mandatory core elective lectures.,Academics
+Faculty refuses to provide reference materials or previous year question papers.,Academics
+The lab assistant refuses to issue required hardware components for IoT experiments.,Academics
+Mathematics faculty solves exercises too quickly on the board without clarifying student doubts.,Academics
+Online lecture recordings are low resolution and have severe audio distortion.,Academics
+The department timetable has 7 continuous hours of lectures without any lunch break.,Academics
+Faculty cancelled the internal viva at the last minute causing immense distress.,Academics
+Syllabus completion is lagging far behind schedule with only two weeks left before finals.,Academics
+The evaluation of our term papers seemed biased and lacked constructive remarks.,Academics
+We are forced to buy expensive proprietary software rather than open-source tools.,Academics
+The semester exam schedule has three tough papers on consecutive days without gaps.,Examination
+My admit card contains spelling errors in my name and registration number.,Examination
+The online exam portal crashed in the middle of our online test and submitted automatically.,Examination
+Revaluation results from the previous semester have not been announced after three months.,Examination
+Examination hall was extremely noisy due to nearby construction work during finals.,Examination
+Supplementary exam fee payment gateway failed but money was deducted from my account.,Examination
+The exam seating arrangement was not displayed on the notice board before the morning shift.,Examination
+Invigilator snatched the answer sheet 15 minutes before the official exam end time.,Examination
+Hall ticket download link is showing a 404 server error on the university website.,Examination
+Final degree grade card contains an incorrect calculation of my cumulative CGPA.,Examination
+Exam center is located over 30 kilometers away from the main college campus.,Examination
+Question paper in the morning examination session had multiple typographical and printing errors.,Examination
+There was no power backup or generator when electricity failed during the computer-based exam.,Examination
+The university has not provided photocopies of evaluated answer booklets requested under RTI.,Examination
+Exam invigilator was constantly speaking on mobile phone creating major disturbance.,Examination
+Duplicate registration numbers were issued to two students for the semester end exam.,Examination
+Evaluation of calculus exam paper was unusually harsh and inconsistent across sections.,Examination
+Examination schedule clashes with a major national competitive entrance test.,Examination
+Online proctoring software flagged false positive tab switches and locked my exam session.,Examination
+Result portal has been down with database connection timeout for the last 48 hours.,Examination
+Original grade sheets and transcripts have not been issued six months after graduation.,Examination
+Exam hall had no functioning wall clocks and invigilators refused to give time announcements.,Examination
+Supplementary examination timetable was released only 24 hours before the first paper.,Examination
+Practical examination external examiner did not show up and students waited for 5 hours.,Examination
+Grace marks policy for sports participants was not applied to my semester scorecard.,Examination
+Answer booklet paper quality was terrible and ink leaked through to the other side.,Examination
+My re-totaling application for thermodynamics was rejected without any written explanation.,Examination
+Room allocated for my examination was locked and invigilator arrived 25 minutes late.,Examination
+Examination cell staff behaved rudely when asked about the status of provisional certificate.,Examination
+Mid-term exam marks were uploaded with swapped grades between two roll numbers.,Examination
+Campus Wi-Fi is extremely slow and disconnects every five minutes across all academic blocks.,IT & Wi-Fi
+Unable to access the student portal and learning management system from off-campus network.,IT & Wi-Fi
+Computer lab 3 has 15 desktop machines with broken keyboards and malfunctioning mice.,IT & Wi-Fi
+College email credentials are locked and the password reset link never arrives.,IT & Wi-Fi
+Wi-Fi signal is completely dead in the mechanical department and central library.,IT & Wi-Fi
+The university intranet website displays security certificate expiration warnings.,IT & Wi-Fi
+Network speed is restricted to less than 100 kbps making research downloads impossible.,IT & Wi-Fi
+Projector and HDMI display setup in seminar hall 2 is not working with any laptop.,IT & Wi-Fi
+College mobile app crashes immediately on launch on Android 14 devices.,IT & Wi-Fi
+Printers in the IT center are constantly out of paper and toner cartridges.,IT & Wi-Fi
+Firewall is blocking legitimate academic websites including GitHub and IEEE Xplore.,IT & Wi-Fi
+Ethernet LAN ports in the coding laboratory are physically damaged and loose.,IT & Wi-Fi
+Two-factor authentication SMS for student login portal is delayed by hours.,IT & Wi-Fi
+Wi-Fi router in the hostel common study area has been turned off for three days.,IT & Wi-Fi
+Computer science lab workstations are infected with malware and browser hijackers.,IT & Wi-Fi
+Cloud storage provided by university account is full and quota increase is pending.,IT & Wi-Fi
+Attendance biometric fingerprint scanners at entrance gate are frequently malfunctioning.,IT & Wi-Fi
+Smart board touchscreen calibration in room 204 is completely offset and unusable.,IT & Wi-Fi
+The campus ERP database throws internal server 500 error when checking course progress.,IT & Wi-Fi
+Virtual private network VPN credentials for digital library access have expired.,IT & Wi-Fi
+Operating system on lab machines has not been updated and crashes during compilation.,IT & Wi-Fi
+The university Wi-Fi login portal loops back repeatedly without authenticating users.,IT & Wi-Fi
+Ethernet cables in room 102 are frayed and creating sparks when connected.,IT & Wi-Fi
+Audio speaker system in the auditorium has loud buzzing static noise during presentations.,IT & Wi-Fi
+Student email inbox is flooded with unmoderated spam and phishing messages.,IT & Wi-Fi
+Computer monitors in CAD lab are flickering violently causing severe eye strain.,IT & Wi-Fi
+The campus portal does not support modern mobile web browsers and breaks formatting.,IT & Wi-Fi
+High packet loss and latency on campus network prevents attending online workshops.,IT & Wi-Fi
+Network switch on the 3rd floor is overheating and turning off intermittently.,IT & Wi-Fi
+License for MATLAB and SolidWorks on college servers has expired and needs renewal.,IT & Wi-Fi
+Ceiling in the civil engineering department corridor is leaking rainwater onto electrical panels.,Infrastructure
+Elevator in the main academic building has been broken and out of order for three weeks.,Infrastructure
+Main staircase handrail on the 2nd floor is loose and poses an immediate falling hazard.,Infrastructure
+Drinking water purifiers on the ground floor are dispensing muddy and foul-smelling water.,Infrastructure
+Fire extinguishers in the science building have expired inspection tags from 2021.,Infrastructure
+Streetlights along the pathway between girls hostel and main gate are not functioning.,Infrastructure
+Deep potholes near the campus entrance gate have caused multiple two-wheeler accidents.,Infrastructure
+Restrooms on the 3rd floor have broken door locks and no running tap water.,Infrastructure
+Underground drainage pipe outside the cafeteria is overflowing and creating unbearable stench.,Infrastructure
+Wheelchair ramp leading to the auditorium is blocked by discarded construction debris.,Infrastructure
+Power outage occurs daily without backup generators starting automatically in building B.,Infrastructure
+Emergency fire exit doors are chained and padlocked from inside the engineering block.,Infrastructure
+Water cooler in the administrative wing is giving electric shock when touched.,Infrastructure
+Plaster from the ceiling of the walkway collapsed narrowly missing several students.,Infrastructure
+Footpath tiles near the sports complex are shattered and sharp edges are exposed.,Infrastructure
+Air conditioning unit in the central auditorium is making grinding noise and leaking water.,Infrastructure
+Campus boundary wall on the north side has collapsed allowing stray cattle inside.,Infrastructure
+Bicycle parking shed roof was blown away during the storm and has not been repaired.,Infrastructure
+Solar panel inverters on the engineering building rooftop are emitting burning smell.,Infrastructure
+Restroom flush valves are broken causing continuous water wastage across all floors.,Infrastructure
+Window panes in the 1st floor corridor are cracked and vibrating in the wind.,Infrastructure
+Underground water tank lid is left open in the garden creating a dangerous pit hazard.,Infrastructure
+Campus roads have no speed bumps and vehicles drive dangerously fast near hostels.,Infrastructure
+The main entrance automatic barrier gate is stuck half open blocking emergency ambulances.,Infrastructure
+Electrical wiring in the central workshop is hanging loose near the metal drilling area.,Infrastructure
+Corridor lighting is completely absent on the 4th floor making it pitch dark at night.,Infrastructure
+Broken glass bottles and construction metal scrap are scattered across the football ground.,Infrastructure
+Water pressure in the upper floor washrooms is zero throughout the entire afternoon.,Infrastructure
+The ceiling fan in classroom 302 is wobbling dangerously at high speed and might fall.,Classroom
+Air conditioning in room 405 has stopped cooling and the room gets suffocatingly hot.,Classroom
+Whiteboard in lecture hall 101 is severely stained and marker text is barely visible.,Classroom
+Several student desk benches in room 208 have broken wooden planks that tear clothes.,Classroom
+The public address mic in the amphitheater classroom is whistling with loud feedback.,Classroom
+Classroom 104 has no window curtains and direct sunlight makes it impossible to see the projector.,Classroom
+Classroom door latch in room 306 is jammed and students were locked inside after lecture.,Classroom
+Insufficient number of chairs in room 210 forcing 15 students to stand during lectures.,Classroom
+Tube lights in the back half of lecture hall B are flickering and inducing headaches.,Classroom
+Room 501 has terrible acoustic echo making it impossible to understand the professor.,Classroom
+Classroom dustbins are overflowing with trash and haven't been emptied for days.,Classroom
+Power sockets next to student desks in room 303 are burnt and non-functional.,Classroom
+The teacher podium in room 108 is broken and wobbles when laptop is placed on it.,Classroom
+Classroom windows cannot be opened due to jammed rusted iron hinges.,Classroom
+Rainwater is seeping through the window frame into the last two rows of room 202.,Classroom
+Chalkboard in mathematics classroom has deep cracks preventing smooth writing.,Classroom
+Classroom 404 smells strongly of mold and dampness causing respiratory discomfort.,Classroom
+Projector screen pull cord snapped and the screen is stuck retracted inside the casing.,Classroom
+No wall clock in classroom 305 makes it difficult to manage presentation timings.,Classroom
+Classroom floor has sticky beverage stains and food crumbs left from yesterday.,Classroom
+Desks in room 107 are too small to place both notebook and laptop simultaneously.,Classroom
+Ceiling exhaust fan in chemistry lecture room makes an ear-splitting grinding noise.,Classroom
+Only one working tube light in room 206 makes the room too dark for reading notes.,Classroom
+Classroom benches have exposed nails that have scratched several students arms.,Classroom
+Classroom 312 has no ventilation since all ventilation grilles are blocked with paint.,Classroom
+The library does not have sufficient copies of prescribed engineering textbooks.,Library
+Central library reading room is noisy because group discussions are not restricted.,Library
+Digital library computers have non-functional headphones for watching video tutorials.,Library
+The online library catalog OPAC system is slow and returns incorrect shelf numbers.,Library
+Library fine calculation system overcharged me for books returned before due date.,Library
+Air conditioning in the reference section on 2nd floor has been off for two weeks.,Library
+Latest editions of international journals and magazines have not been subscribed this year.,Library
+Library barcode scanner at checkout desk is broken resulting in 30 minute long queues.,Library
+Books in the computer science aisle are disorganized and misplaced across other sections.,Library
+Library operating hours are too short and should be extended until midnight during exam week.,Library
+The e-book repository portal requires campus IP and does not work over student home Wi-Fi.,Library
+Water stains and mold have damaged several valuable rare reference volumes on shelf 12.,Library
+Reading room chairs have worn-out cushioning with exposed wooden boards.,Library
+Library staff member at circulation counter was unhelpful and dismissive of queries.,Library
+Photocopy and printing machine in the library has been broken for over a month.,Library
+Noise from the adjacent cafeteria easily penetrates the quiet study zone of the library.,Library
+Student book renewal limit is restricted to only one time which is inadequate.,Library
+RFID security gate at library exit triggers false alarm alarms on legitimate checkouts.,Library
+New arrival book display section has not been updated with any new titles in six months.,Library
+Lighting between the book stacks on the third floor is dim and bulbs need replacement.,Library
+Library study carrels lack individual power outlets for charging study laptops.,Library
+Research paper repository search engine times out when querying author names.,Library
+Strict penalty of 50 dollars for minor pencil underline in library books is excessive.,Library
+The library drinking water dispenser is warm and tastes strongly of chlorine.,Library
+Bags storage lockers outside the library entrance have damaged keys and broken latches.,Library
+The food served in the main campus cafeteria is unhygienic and cold.,Canteen
+Found hair and insects in the vegetable curry served during lunch at the mess.,Canteen
+Canteen vendors are charging prices higher than the printed maximum retail price MRP.,Canteen
+Drinking water glass tumblers in the canteen are greasy and poorly washed.,Canteen
+The cafeteria menu lacks healthy vegetarian and fresh fruit options.,Canteen
+Long waiting queues of over 40 minutes at lunch counter due to single cashier.,Canteen
+Food quality in the hostel dining hall has severely deteriorated over the last month.,Canteen
+"Canteen kitchen staff do not wear hairnets, gloves, or aprons while cooking.",Canteen
+Expired packaged dairy products and stale sandwiches were being sold at the snack bar.,Canteen
+Tables in the cafeteria are not cleaned between meals and remain littered with plates.,Canteen
+The canteen billing machine does not accept UPI digital payments or credit cards.,Canteen
+Food poisoning incident occurred after students consumed stale chicken fried rice.,Canteen
+Canteen cooking oil smells rancid and reused repeatedly for multiple days.,Canteen
+Utensils and trays used in the mess have soap residue remaining on food surfaces.,Canteen
+The canteen seating capacity is completely inadequate during peak lunch hour.,Canteen
+Stray cats and dogs wander freely inside the cafeteria dining hall near open food.,Canteen
+Drinking water cooler near the cafeteria has a foul stagnant odor and green algae.,Canteen
+Price of basic lunch thali was increased by 40 percent without student committee review.,Canteen
+Tea and coffee served in the cafeteria are watered down and lukewarm.,Canteen
+Hand wash area near canteen has no liquid soap or hand sanitizer provided.,Canteen
+The canteen exhaust chimney is malfunctioning filling the dining hall with choking smoke.,Canteen
+Canteen vendors refuse to provide printed itemized receipts for card transactions.,Canteen
+Breakfast is consistently delayed by 45 minutes causing students to miss early classes.,Canteen
+Vegetables used in the mess meals appear rotten and unwashed.,Canteen
+Canteen staff behaved aggressively when a student pointed out expired bread on the shelf.,Canteen
+Hot water geyser in hostel block C has not been working during the entire winter.,Hostel
+Severe water shortage in boys hostel B with zero water supply in morning hours.,Hostel
+Hostel room allocated to me has severe bed bug infestation and damp walls.,Hostel
+Hostel Wi-Fi access is turned off every night at 10 PM hindering study.,Hostel
+Hostel security guard allows unauthorized outsiders into the residential block.,Hostel
+Washroom drainage on the 2nd floor of girls hostel is clogged and backing up foul water.,Hostel
+Hostel mess food is unpalatable and caused stomach infections to multiple residents.,Hostel
+The drinking water filter in block A has red dirt sediments settling at the bottom.,Hostel
+Hostel warden is inaccessible and refuses to sign leave outstation permission slips.,Hostel
+"Hostel gym equipment is rusted, cables are snapped, and weights are scattered dangerously.",Hostel
+Electricity fluctuations in hostel rooms have damaged several student laptops and chargers.,Hostel
+Hostel curfew timing is overly restrictive compared to other university accommodations.,Hostel
+Looming mosquito breeding issue in the stagnant puddle outside hostel block D.,Hostel
+Hostel laundry washing machines are broken and clothes come out smelling of grease.,Hostel
+Window mosquito mesh in room 314 is torn allowing swarms of insects at night.,Hostel
+Hostel room door lock is defective and can be pushed open without a key.,Hostel
+Common room television and air conditioner have been broken for six months.,Hostel
+Hostel corridor lighting is non-functional creating security anxiety after sundown.,Hostel
+Hostel maintenance staff entered student room without knocking or obtaining permission.,Hostel
+Hostel lift is getting stuck between 3rd and 4th floors with students trapped inside.,Hostel
+Loud music and shouting in the hostel courtyard past 2 AM is not checked by wardens.,Hostel
+Hostel room furniture is termite infested and dust is falling onto student beds.,Hostel
+Hostel fees refund for vacating early during internship semester was unjustly denied.,Hostel
+Hot water supply runs out within 15 minutes of being switched on in the morning.,Hostel
+Hostel bathroom doors have missing bolts and rusted hinges that do not shut tightly.,Hostel
+College bus route number 7 arrives 30 minutes late every morning causing missed classes.,Transport
+University shuttle bus is severely overcrowded with students hanging from open doors.,Transport
+Bus driver on route 12 was driving recklessly and using mobile phone while driving.,Transport
+AC on the college transport bus is not working and windows are sealed shut.,Transport
+Student bus pass renewal process takes more than two weeks of bureaucratic delays.,Transport
+Campus electric shuttle frequency is too low between north and south campuses.,Transport
+Bus fare for semester transport was increased by 50 percent without improvement in service.,Transport
+College bus broke down in the middle of highway and no backup vehicle was dispatched.,Transport
+Bus seats are torn with metal springs poking out causing injuries to commuters.,Transport
+College bus skipped the designated pickup stop at metro station leaving 20 students stranded.,Transport
+No college bus service available for students staying late for laboratory and club work.,Transport
+Bus conductor behaved rudely and refused to honor valid college transport pass.,Transport
+Two-wheeler parking lot has no security guard and helmet theft is occurring regularly.,Transport
+Campus internal speed limits are violated by heavy delivery trucks during class hours.,Transport
+College bus emergency exit door is welded shut and fire extinguisher is missing.,Transport
+Transport department changed bus timing without sending SMS or email alert.,Transport
+Student cars and bikes are scratched due to congested and unorganized parking bays.,Transport
+Rainwater gets flooded in the college bus passenger aisle due to leaky roof joints.,Transport
+Bus drivers blow loud shrill air horns inside the silent academic campus zone.,Transport
+Transport desk at admin block is always unstaffed during official query hours.,Transport
+Bus route 4 was cancelled permanently without providing alternative transit routes.,Transport
+College transport GPS live tracking app is constantly showing inaccurate bus locations.,Transport
+Bicycle sharing stand bicycles have flat tires and rusted chain assemblies.,Transport
+Transport fee was charged for full academic year despite college being hybrid.,Transport
+Bus driver refused to stop at the approved hospital bus stop for an unwell student.,Transport
+"Administrative office staff is rude, uncooperative, and keeps counters closed during hours.",Administration
+Application for duplicate student ID card has been pending for over 6 weeks.,Administration
+No clear guidance provided for obtaining official bonafide certificate for passport.,Administration
+Long queues at the single administrative token window with no token management system.,Administration
+College administration lost my submitted original migration certificate and documents.,Administration
+Administrative staff took a 2 hour lunch break while hundreds of students waited outside.,Administration
+Discrepancy in student record regarding father's name has not been corrected despite affidavit.,Administration
+University helpline phone numbers ring continuously with nobody answering calls.,Administration
+Notice regarding scholarship application was published on the board after the deadline passed.,Administration
+Security guards at the college gate treat students disrespectfully and confiscate bags unfairly.,Administration
+The administrative building has no helpdesk or signage for newly admitted first year students.,Administration
+Permission letter for organizing technical college symposium has been stuck in approvals for a month.,Administration
+Hostel security deposit refund has been delayed for 8 months after course completion.,Administration
+Admin office refused to accept digital copy of documents and insisted on physical stamp.,Administration
+Character certificate issuance takes 15 business days while other colleges issue immediately.,Administration
+Official college notices contain spelling errors and contradictory instructions.,Administration
+Admin section clerk demanded unauthorized cash fees for speeding up document verification.,Administration
+Lost and found department does not maintain a register and refuses to check found items.,Administration
+College ID card scanner at the library does not recognize cards issued this semester.,Administration
+Student grievance redressal portal submissions are closed automatically without resolution.,Administration
+No grievance officer is present on campus during designated student interaction hours.,Administration
+Official email inquiries sent to registrar office are ignored for weeks.,Administration
+Administrative office refuses to provide acknowledgement slip for received application forms.,Administration
+Student council election guidelines were altered arbitrarily without prior notice.,Administration
+Medical room in the admin block has no first aid supplies or nurse present during emergencies.,Administration
+Semester tuition fee payment portal deducted amount twice due to gateway glitch.,Fees & Accounts
+Late fee penalty was charged unfairly even though transaction was attempted before deadline.,Fees & Accounts
+Scholarship amount credited by government has not been disbursed to my student bank account.,Fees & Accounts
+Accounts department has not updated my fee payment status on the ERP portal after one month.,Fees & Accounts
+No breakdown or itemized receipt is provided for miscellaneous activity fees charged.,Fees & Accounts
+Security deposit refund check bounced due to signature mismatch by accounts officer.,Fees & Accounts
+Fee installment payment request was summarily rejected without considering financial hardship.,Fees & Accounts
+Accounts office does not accept online net banking and insists on physical demand drafts.,Fees & Accounts
+Incorrect fine of 2000 rupees was added to my fee portal for nonexistent library dues.,Fees & Accounts
+Caution deposit return procedure is overly complicated with 12 physical signatures required.,Fees & Accounts
+Refund for cancelled hostel accommodation has not been processed after four months.,Fees & Accounts
+Accounts window is open only for one hour daily resulting in massive chaotic crowds.,Fees & Accounts
+Tuition fee tax invoice does not mention student GST or university PAN details for IT exemption.,Fees & Accounts
+Payment gateway charges extra 3 percent convenience fee on debit card transactions.,Fees & Accounts
+Student fellowship stipend for research scholar has been delayed for three quarters.,Fees & Accounts
+Fee receipt generated on student portal has incorrect enrollment number printed on it.,Fees & Accounts
+Accounts department failed to credit the merit cum means scholarship waiver to fee slip.,Fees & Accounts
+Excess fee paid during admission counseling has not been refunded to bank account.,Fees & Accounts
+Late payment warning email was sent despite having cleared all semester fee dues in full.,Fees & Accounts
+Fee payment challan format is not accepted by several major nationalized banks.,Fees & Accounts
+Accounts desk staff refuses to explain the unexplained university development charges.,Fees & Accounts
+Fee refund policy is completely opaque and violates regulatory educational guidelines.,Fees & Accounts
+Demand draft submitted for semester fees was misplaced by the cashier office.,Fees & Accounts
+No electronic receipt or SMS notification sent after paying tuition fees at cashier counter.,Fees & Accounts
+Financial aid clearance certificate is delayed holding up my final degree issuance.,Fees & Accounts
+Campus stray dogs are aggressive and have chased students near the girls hostel walkway.,Other
+Gymnasium treadmill and elliptical machines are broken with cables dangling dangerously.,Other
+Sanitary napkin vending machines in ladies restrooms are empty and non-functional.,Other
+Heavy smoke from burning garden leaves and plastic trash behind sports ground causes breathing issues.,Other
+Campus bookstore charges arbitrary inflated prices for standard notebooks and stationery.,Other
+No proper wheelchair accessibility or tactile paving across campus walkways for disabled students.,Other
+Lost my student wallet in the auditorium and security staff refused to review CCTV footage.,Other
+"Campus medical center does not have basic medicines for fever, headache, or stomach upset.",Other
+Loud event music and bass vibration from nearby marriage hall disturbs study after 10 PM.,Other
+College sports ground has overgrown thorny weeds and is infested with snakes and insects.,Other
+Photocopy shop on campus overcharges students and produces illegible faint copies.,Other
+No dedicated lactation or resting room for nursing mothers and unwell female students.,Other
+Campus recycling bins are not separated and all waste is dumped together in landfill.,Other
+College stationery store does not accept UPI payments and refuses to give exact coin change.,Other
+Unauthorized commercial photography crew was filming on campus disturbing classes.,Other
+Cricket pitch on the sports ground is unmaintained and flooded with muddy water.,Other
+Campus ambulance has a flat tire and is parked abandoned near the workshop building.,Other
+Student club room was allocated to commercial event without informing student club leaders.,Other
+Mosquito fogging has not been carried out on campus leading to dengue cases among students.,Other
+Campus security guard denied entry to a visually impaired student accompanied by a guide.,Other
+College auditorium air quality is extremely dusty and trigger allergic asthma attacks.,Other
+First aid box in the indoor badminton stadium is empty without bandages or antiseptics.,Other
+Campus trees have dead overgrown branches that are in danger of falling onto parked vehicles.,Other
+Drinking water fountain near basketball court has bird droppings and rust around the nozzle.,Other
+Outdoor solar charging benches are vandalized with broken USB ports and cracked panels.,Other
+The professor for compiler design is not providing notes or lecture slides on the course portal.,Academics
+Machine learning practical lab sessions are rushed and students are unable to execute python code.,Academics
+Our assigned faculty guide is constantly unavailable for final year project guidance.,Academics
+The chemistry department has not scheduled makeup classes for missed lab sessions.,Academics
+Elective subject selection portal closed early and students were assigned random subjects.,Academics
+Faculty member refuses to clarify mathematical proofs during lecture office hours.,Academics
+Course syllabus for data structures is not aligned with modern industry standards.,Academics
+The teaching assistant grading our programming homework gave zero feedback or rubrics.,Academics
+Textbooks listed in the academic syllabus are completely unavailable in bookstores.,Academics
+Class lecture was canceled at the last minute without any notification email to students.,Academics
+Attendance records were uploaded incorrectly for engineering mechanics course.,Academics
+Physics lecture speed is excessively fast making it impossible to take down notes.,Academics
+The examination hall ticket portal is not allowing students to download admit cards.,Examination
+Semester final examination schedule has three core engineering papers without any study break.,Examination
+Revaluation and re-totaling results from last semester are delayed by four months.,Examination
+There was a severe printing defect and missing questions in today's calculus question paper.,Examination
+Invigilator in exam room 204 was constantly talking loudly on phone during the exam.,Examination
+Online examination portal crashed during my test submission and marked me absent.,Examination
+Admit card contains an error in student name and registration roll number.,Examination
+Exam center allocated for semester end exam is located in an inaccessible area.,Examination
+The supplementary examination fee payment receipt was not generated after deduction.,Examination
+Evaluation of thermodynamics semester paper was unfair and inconsistent.,Examination
+The university results portal has been down with server 500 error since morning.,Examination
+Graduation degree certificates and final marks transcripts have not been issued.,Examination
+Campus Wi-Fi connectivity in the engineering block is completely dead today.,IT & Wi-Fi
+Unable to log in to university email account due to multi-factor authentication SMS failure.,IT & Wi-Fi
+Computer lab 4 desktop workstations have broken mice and missing ethernet cables.,IT & Wi-Fi
+The college portal and LMS website are displaying SSL certificate security warnings.,IT & Wi-Fi
+Internet speed across campus is severely throttled to under 50 kbps.,IT & Wi-Fi
+Projector in seminar hall is not detecting HDMI signal from presenter laptops.,IT & Wi-Fi
+The student ERP mobile application crashes on startup on Android and iOS.,IT & Wi-Fi
+Firewall on college Wi-Fi is blocking academic research repositories and GitHub.,IT & Wi-Fi
+Biometric attendance fingerprint machine at the main department gate is unresponsive.,IT & Wi-Fi
+Printers in the central computer lab are out of toner and paper cartridges.,IT & Wi-Fi
+Wi-Fi router in the library study lounge keeps dropping connection every few minutes.,IT & Wi-Fi
+Virtual machine licenses for cloud computing lab have expired on university servers.,IT & Wi-Fi
+Severe ceiling water leakage in the civil building corridor near the power box.,Infrastructure
+Elevator in the main academic building has been broken and non-functional for two weeks.,Infrastructure
+Main staircase metal railing is loose and poses an immediate falling risk.,Infrastructure
+Drinking water purifiers on the second floor are dispensing dirty muddy water.,Infrastructure
+Street lights along the hostel road are pitch dark causing major student safety concerns.,Infrastructure
+Fire extinguishers in the science wing have expired inspection tags.,Infrastructure
+Large hazardous potholes at the main vehicle entrance gate have caused bike accidents.,Infrastructure
+Restrooms on the third floor have broken flush tanks and no water supply.,Infrastructure
+Overflowing sewage drainage near the cafeteria is generating an unbearable stench.,Infrastructure
+Wheelchair accessibility ramp at the auditorium entrance is broken and unsafe.,Infrastructure
+Frequent power cuts in academic block B with no generator backup kicking in.,Infrastructure
+Loose electrical wires hanging from the ceiling in the central mechanical workshop.,Infrastructure
+The ceiling fan in room 305 is wobbling violently at high speed and might fall.,Classroom
+Air conditioning unit in lecture hall 102 has stopped cooling and room is suffocating.,Classroom
+Whiteboard in classroom 204 is severely scratched and marker text cannot be seen.,Classroom
+Wooden benches in room 108 have broken planks with sharp edges tearing student clothes.,Classroom
+Audio microphone in amphitheater lecture room produces terrible whistling feedback.,Classroom
+Classroom 201 has broken window blinds allowing blinding sunlight on projector screen.,Classroom
+Classroom door lock in room 402 is jammed and students got stuck inside after class.,Classroom
+Insufficient number of chairs in room 212 forcing students to stand during lectures.,Classroom
+Fluorescent tube lights in room 304 are flickering constantly causing eye strain.,Classroom
+Acoustic echo in room 502 makes the teacher's voice completely unintelligible.,Classroom
+Classroom garbage bins are overflowing with trash and haven't been emptied.,Classroom
+Power sockets near student desks in room 301 are burnt out and dead.,Classroom
+The central library has insufficient copies of prescribed engineering textbooks.,Library
+Library quiet reading room is very noisy because staff does not enforce silence.,Library
+Online library catalog OPAC system is down and does not show book shelf locations.,Library
+Automated RFID book checkout scanner at library desk is broken creating long lines.,Library
+Air conditioning in the reference section on the 2nd floor of library is not turned on.,Library
+Latest editions of scientific journals and IEEE magazines have not arrived.,Library
+Books in computer science aisle are misplaced and scattered in other racks.,Library
+Digital library computers have broken headphones and missing mouse pads.,Library
+Library operating hours are too limited and should be open until midnight during exams.,Library
+E-book portal requires on-campus IP and cannot be accessed from student homes.,Library
+Library study cubicles lack power charging points for study laptops.,Library
+Excessive overdue fine was charged for library books that were already returned.,Library
+Food served in the college mess is unhygienic and vegetables were half-cooked.,Canteen
+Found insects in the lunch meal served at the central cafeteria today.,Canteen
+Canteen snack stall is charging prices higher than the printed MRP.,Canteen
+Cafeteria drinking water glasses and trays are greasy and poorly cleaned.,Canteen
+The canteen menu completely lacks healthy meal and fresh juice choices.,Canteen
+Huge crowd and 40 minute wait times at lunch counter due to single cashier.,Canteen
+Mess food quality has deteriorated drastically over the past month.,Canteen
+Canteen kitchen workers do not wear hygienic hairnets or gloves while cooking.,Canteen
+Expired packaged yogurt and stale sandwiches were sold at the cafeteria counter.,Canteen
+Dining tables in the canteen are not wiped between meals and stay messy.,Canteen
+Canteen counter does not accept digital UPI or card payments.,Canteen
+Multiple students suffered food poisoning after eating cafeteria chicken meal.,Canteen
+Hot water geysers in hostel block C are broken during freezing cold weather.,Hostel
+Severe water shortage in boys hostel A with zero water supply in morning.,Hostel
+Hostel room allocated to me has severe bed bug problem and damp leaking walls.,Hostel
+Hostel Wi-Fi router is turned off every night at 10 PM stopping exam prep.,Hostel
+Hostel security guards allow unauthorized outsiders into the student block.,Hostel
+Washroom drains on 2nd floor of girls hostel are clogged with foul water backing up.,Hostel
+Hostel drinking water dispenser filter has brown rust and dirt sediments.,Hostel
+Hostel warden refuses to sign student leave and outstation permission slips.,Hostel
+Hostel gymnasium equipment has frayed steel cables and rusted weights.,Hostel
+Electricity voltage spikes in hostel rooms have damaged laptop power adapters.,Hostel
+Hostel washing machines in laundry room are broken and not spinning.,Hostel
+Hostel room door lock latch is loose and can be pushed open without key.,Hostel
+College bus route 8 arrives 35 minutes late every morning causing missed classes.,Transport
+University transit bus is severely overcrowded with students standing on footboard.,Transport
+Bus driver on route 14 was driving dangerously fast and using phone while driving.,Transport
+Air conditioning on the college transport bus is non-functional with windows sealed.,Transport
+Student bus pass renewal process takes over two weeks of administrative delays.,Transport
+Campus shuttle bus frequency between engineering and medical blocks is too low.,Transport
+Bus broke down on the expressway and no replacement transport was sent for hours.,Transport
+College bus seats have torn fabric with metal springs poking out.,Transport
+Bus skipped the designated bus pickup stop leaving 15 students stranded.,Transport
+No evening college bus service available for students staying late for lab projects.,Transport
+Two-wheeler vehicle parking area has no security guard and helmet theft is frequent.,Transport
+College bus live GPS location tracking application is completely inaccurate.,Transport
+"Administrative office staff is unhelpful, rude, and closes query counters early.",Administration
+Application for duplicate college identity card has been pending for six weeks.,Administration
+No proper guidance provided for obtaining official college bonafide certificate.,Administration
+Huge unorganized queues at administration building with no token queuing system.,Administration
+Administrative office misplaced my original submitted migration and transfer certificates.,Administration
+Staff at admin window took a two hour lunch break while students waited outside.,Administration
+Correction of father name in university database is pending despite submitting affidavit.,Administration
+Official university helpline telephone numbers are never answered by operators.,Administration
+Scholarship application notification was posted on notice board after the deadline.,Administration
+Security guards at campus main gate treat students disrespectfully.,Administration
+Student grievance redressal portal requests are closed without any resolution.,Administration
+Administrative counter refused to provide an acknowledgement slip for received form.,Administration
+Semester tuition fee was debited twice from my bank account due to portal glitch.,Fees & Accounts
+Late fee fine was charged unfairly although payment was attempted before deadline.,Fees & Accounts
+Government scholarship funds have not been disbursed to my student bank account.,Fees & Accounts
+Accounts department has not updated my semester fee payment status on ERP portal.,Fees & Accounts
+No itemized receipt or breakdown is provided for miscellaneous activity fees.,Fees & Accounts
+Security caution deposit refund cheque bounced due to accounts officer signature error.,Fees & Accounts
+Fee installment request was rejected without evaluating genuine financial hardship.,Fees & Accounts
+Accounts office refuses online net banking and demands physical bank demand drafts.,Fees & Accounts
+Incorrect fine of 1500 rupees was added to fee portal for nonexistent library dues.,Fees & Accounts
+Hostel fee refund for vacating early during semester has been delayed for months.,Fees & Accounts
+Payment gateway charges an exorbitant convenience fee on debit card payments.,Fees & Accounts
+Merit scholarship fee concession was not credited to my semester fee voucher.,Fees & Accounts
+Pack of aggressive stray dogs chasing students near the campus sports ground.,Other
+Gymnasium treadmill and workout machines are broken with cables dangling dangerously.,Other
+Sanitary napkin vending machines in ladies washrooms are empty and unmaintained.,Other
+Heavy smoke from burning garden dry leaves behind the playground causes breathing problems.,Other
+Campus bookstore overcharges students on standard stationary and lab notebooks.,Other
+Lack of wheelchair ramps and tactile paths for physically disabled students.,Other
+Campus medical dispensary does not have basic first aid or fever medicines.,Other
+Loud noise and music from adjacent marriage hall disturbs student night study.,Other
+College cricket pitch and sports ground are overgrown with weeds and muddy puddles.,Other
+Campus ambulance has a flat tire and is parked out of commission.,Other
+Mosquito fogging has not been carried out leading to mosquito breeding on campus.,Other
+First aid emergency kit in indoor sports stadium is completely empty.,Other
+Need AC in class,Classroom
+"Theres no AC in our class, please put it fast",Classroom
+"There is no AC in our classroom, please install it",Classroom
+"No AC in room 214, very hot inside",Classroom
+AC is not working in the classroom,Classroom
+Classroom AC stopped working during lecture,Classroom
+The AC in room 302 is broken and leaking water,Classroom
+Need new fan and AC in computer science class,Classroom
+Fans and lights are not working in classroom 105,Classroom
+Air conditioning unit in classroom 204 is blowing warm air,Classroom
+Classroom 101 has no AC and suffocating heat during afternoon lecture,Classroom
+Please fix the AC and fan in class BE Comps,Classroom
+"Classroom projector, AC, and mic are out of order",Classroom
+No air conditioner or fan in lecture room 405,Classroom
+Classroom desks and benches are broken,Classroom
+Whiteboard markers and duster missing in room 208,Classroom
+AC in central auditorium is making loud noise,Infrastructure
+Building main power generator is not turning on during power cuts,Infrastructure
+Restroom flush and taps have no water on 2nd floor,Infrastructure
+Main hallway ceiling is leaking dirty rainwater,Infrastructure
+Elevator in academic block is stuck and not operational,Infrastructure
+Campus Wi-Fi is down in computer lab,IT & Wi-Fi
+No internet connection or wifi in room 214,IT & Wi-Fi
+College student portal login is failing,IT & Wi-Fi
+Lab computer keyboards and mice are not working,IT & Wi-Fi
+Professor is not taking lectures on time,Academics
+Data structures syllabus is not completed by faculty,Academics
+Lab practical assistant is unhelpful during coding session,Academics
+Internal assessment assignment marks are not shared,Academics

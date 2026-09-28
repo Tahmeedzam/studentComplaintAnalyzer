@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Smart Student Complaint Analyzer{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+    <div>
+        <h2 class="fw-bold mb-1">Administrative Overview</h2>
+        <p class="text-muted small mb-0">Institution-wide complaint analytics, NLP insights, and grievance triage.</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a href="{{ url_for('admin.complaints') }}" class="btn btn-primary shadow-sm btn-sm">
+            <i class="bi bi-list-check me-1"></i>Manage Complaints
+        </a>
+        <a href="{{ url_for('admin.analytics') }}" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-graph-up me-1"></i>Detailed Analytics
+        </a>
+    </div>
+</div>
+
+<!-- 5 Stat Cards -->
+<div class="row g-3 mb-4">
+    <div class="col-sm-6 col-lg">
+        <div class="card stat-card h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase">Total</span>
+                    <h3 class="fw-bold text-dark mt-1 mb-0">{{ total }}</h3>
+                </div>
+                <div class="stat-icon-box bg-primary-light text-primary">
+                    <i class="bi bi-inboxes-fill"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg">
+        <div class="card stat-card stat-pending h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase">Pending</span>
+                    <h3 class="fw-bold text-dark mt-1 mb-0">{{ pending }}</h3>
+                </div>
+                <div class="stat-icon-box bg-warning-light text-warning">
+                    <i class="bi bi-hourglass-split"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg">
+        <div class="card stat-card stat-progress h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase">In Progress</span>
+                    <h3 class="fw-bold text-dark mt-1 mb-0">{{ in_progress }}</h3>
+                </div>
+                <div class="stat-icon-box bg-info-light text-info">
+                    <i class="bi bi-arrow-repeat"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg">
+        <div class="card stat-card stat-resolved h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase">Resolved</span>
+                    <h3 class="fw-bold text-dark mt-1 mb-0">{{ resolved }}</h3>
+                </div>
+                <div class="stat-icon-box bg-success-light text-success">
+                    <i class="bi bi-check2-circle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg">
+        <div class="card stat-card stat-high h-100 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase">High Priority</span>
+                    <h3 class="fw-bold text-danger mt-1 mb-0">{{ high_priority }}</h3>
+                </div>
+                <div class="stat-icon-box bg-danger-light text-danger">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Real-time Chart.js Analytics Grid -->
+<div class="row g-4 mb-4">
+    <!-- Category Distribution Chart -->
+    <div class="col-lg-6">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-header bg-white py-3">
+                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-bar-chart-fill text-primary me-2"></i>Complaints by Category</h6>
+            </div>
+            <div class="card-body" style="height: 300px;">
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sentiment Distribution Chart -->
+    <div class="col-lg-3 col-md-6">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-header bg-white py-3">
+                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-emoji-smile-fill text-success me-2"></i>Sentiment</h6>
+            </div>
+            <div class="card-body" style="height: 300px;">
+                <canvas id="sentimentChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Priority Distribution Chart -->
+    <div class="col-lg-3 col-md-6">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-header bg-white py-3">
+                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-flag-fill text-danger me-2"></i>Priority</h6>
+            </div>
+            <div class="card-body" style="height: 300px;">
+                <canvas id="priorityChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Complaints Table -->
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+        <h5 class="fw-bold mb-0 text-dark"><i class="bi bi-clock-history text-primary me-2"></i>Recently Logged Grievances</h5>
+        <a href="{{ url_for('admin.complaints') }}" class="btn btn-sm btn-outline-primary">
+            View All Complaints
+        </a>
+    </div>
+
+    <div class="card-body p-0">
+        {% if recent_complaints %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-3">ID</th>
+                            <th>Student</th>
+                            <th>Subject & Keywords</th>
+                            <th>Category</th>
+                            <th>Priority</th>
+                            <th>Sentiment</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th class="text-end pe-3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in recent_complaints %}
+                            <tr>
+                                <td class="ps-3 fw-bold text-muted">#{{ c.id }}</td>
+                                <td>
+                                    <div class="fw-semibold text-dark">{{ c.student.name }}</div>
+                                    <div class="small text-muted">{{ c.student.email }}</div>
+                                </td>
+                                <td>
+                                    <div class="fw-semibold text-dark">{{ c.title }}</div>
+                                    <div class="mt-1">
+                                        {% for kw in c.keywords_list %}
+                                            <span class="keyword-tag py-0 px-2 small">{{ kw }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </td>
+                                <td><span class="badge bg-light text-dark border">{{ c.category }}</span></td>
+                                <td><span class="badge {{ c.priority|priority_badge }}">{{ c.priority }}</span></td>
+                                <td><span class="badge {{ c.sentiment|sentiment_badge }} small">{{ c.sentiment }}</span></td>
+                                <td><span class="badge {{ c.status|status_badge }}">{{ c.status }}</span></td>
+                                <td class="small text-muted">{{ c.created_at.strftime('%b %d, %Y') }}</td>
+                                <td class="text-end pe-3">
+                                    <a href="{{ url_for('admin.complaint_detail', complaint_id=c.id) }}" class="btn btn-sm btn-light border">
+                                        Triage <i class="bi bi-chevron-right"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="text-center py-5">
+                <i class="bi bi-inbox text-muted display-4 mb-2 d-block"></i>
+                <p class="text-muted">No complaints recorded yet.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const categoryData = {{ category_data | tojson }};
+    const sentimentData = {{ sentiment_data | tojson }};
+    const priorityData = {{ priority_data | tojson }};
+
+    initCategoryChart('categoryChart', categoryData);
+    initSentimentChart('sentimentChart', sentimentData);
+    initPriorityChart('priorityChart', priorityData);
+});
+</script>
+{% endblock %}

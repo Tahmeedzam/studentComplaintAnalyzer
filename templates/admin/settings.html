@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Administrator Settings - Smart Student Complaint Analyzer{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-3">
+    <div class="col-lg-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3 border-bottom">
+                <h4 class="fw-bold mb-0 text-dark"><i class="bi bi-gear-fill text-primary me-2"></i>Administrator Account Settings</h4>
+            </div>
+
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('admin.settings') }}">
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label fw-semibold small">Administrator Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ current_user.name }}" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label fw-semibold small">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ current_user.email }}" required>
+                    </div>
+
+                    <hr class="my-4">
+                    <h6 class="fw-bold text-muted small text-uppercase mb-3">Change Password (Leave blank to keep unchanged)</h6>
+
+                    <!-- New Password -->
+                    <div class="mb-3">
+                        <label for="new_password" class="form-label fw-semibold small">New Password</label>
+                        <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Enter new password">
+                    </div>
+
+                    <!-- Confirm New Password -->
+                    <div class="mb-4">
+                        <label for="confirm_password" class="form-label fw-semibold small">Confirm New Password</label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Re-enter new password">
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="{{ url_for('admin.dashboard') }}" class="btn btn-outline-secondary">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary px-4">
+                            <i class="bi bi-save me-1"></i>Save Settings
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

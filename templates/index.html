@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Smart Student Complaint Analyzer{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="row align-items-center py-5">
+    <div class="col-lg-7 text-center text-lg-start mb-4 mb-lg-0">
+        <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill fw-semibold mb-3">
+            <i class="bi bi-stars me-1"></i>Natural Language Processing Powered
+        </span>
+        <h1 class="display-5 fw-bold text-dark mb-3">
+            Smart Student Complaint Analyzer
+        </h1>
+        <p class="lead text-muted mb-4">
+            Submit your grievance and let real-time NLP algorithms automatically categorize the problem, score sentiment, calculate priority, and route it to the right department.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+            <a href="{{ url_for('student.new_complaint') }}" class="btn btn-primary btn-lg shadow-sm">
+                <i class="bi bi-send-fill me-2"></i>Submit Complaint
+            </a>
+            <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary btn-lg">
+                <i class="bi bi-box-arrow-in-right me-2"></i>Sign In to Portal
+            </a>
+        </div>
+        <div class="d-flex align-items-center gap-4 mt-4 pt-2 text-muted small justify-content-center justify-content-lg-start">
+            <div><i class="bi bi-check-circle-fill text-success me-1"></i><strong>{{ total_complaints }}</strong> Complaints Tracked</div>
+            <div><i class="bi bi-check-circle-fill text-success me-1"></i><strong>{{ resolved_complaints }}</strong> Issues Resolved</div>
+            <div><i class="bi bi-lightning-charge-fill text-warning me-1"></i>Sub-second ML Inference</div>
+        </div>
+    </div>
+
+    <!-- Live Interactive NLP Tester Card -->
+    <div class="col-lg-5">
+        <div class="card shadow-md border-0">
+            <div class="card-header bg-primary text-white d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-cpu-fill fs-5"></i>
+                    <span class="fw-bold">Interactive NLP Playground</span>
+                </div>
+                <span class="badge bg-white text-primary small">Live Model</span>
+            </div>
+            <div class="card-body p-4">
+                <p class="small text-muted mb-2">Test any complaint text below to observe the NLP pipeline in action:</p>
+                <textarea id="demo-complaint-text" class="form-control mb-3" rows="3" placeholder="Type a college complaint e.g., 'The Wi-Fi in the central library is down and not working for 2 days'"></textarea>
+                
+                <div class="mb-3">
+                    <div class="small text-muted mb-1 fw-semibold">Or try sample presets:</div>
+                    <div class="d-flex flex-wrap gap-1">
+                        <button type="button" class="btn btn-sm btn-light border sample-chip" data-sample="The Wi-Fi in the computer science lab is not working and disconnecting constantly.">Wi-Fi Issue</button>
+                        <button type="button" class="btn btn-sm btn-light border sample-chip" data-sample="Urgent emergency! Sparks and smoke coming from the electrical switchboard near classroom 302.">Electrical Hazard</button>
+                        <button type="button" class="btn btn-sm btn-light border sample-chip" data-sample="Food served in the hostel canteen today was stale and caused stomach pain.">Canteen Hygiene</button>
+                        <button type="button" class="btn btn-sm btn-light border sample-chip" data-sample="The university exam portal crashed during hall ticket download for tomorrow's exam.">Exam Portal</button>
+                    </div>
+                </div>
+
+                <button id="btn-demo-analyze" class="btn btn-primary w-100 mb-3">
+                    <i class="bi bi-magic me-1"></i>Analyze Complaint with NLP
+                </button>
+
+                <!-- Loading Spinner -->
+                <div id="demo-loading-spinner" class="text-center py-3" style="display: none;">
+                    <div class="spinner-border text-primary spinner-border-sm me-2" role="status"></div>
+                    <span class="small text-muted">Running Preprocessing, TF-IDF Vectorization & Sentiment Analysis...</span>
+                </div>
+
+                <!-- Result Container -->
+                <div id="demo-nlp-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="my-5 border-light">
+
+<!-- How It Works Section -->
+<div class="my-5">
+    <div class="text-center max-w-700 mx-auto mb-5">
+        <h2 class="fw-bold">How The System Works</h2>
+        <p class="text-muted">A streamlined 4-step pipeline transforming student text into structured, actionable administration tickets.</p>
+    </div>
+
+    <div class="row g-4 text-center">
+        <div class="col-md-3">
+            <div class="card h-100 p-4 border-0 shadow-sm">
+                <div class="stat-icon-box bg-primary-light text-primary mx-auto mb-3">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+                <h5 class="fw-bold">1. Submit Grievance</h5>
+                <p class="small text-muted mb-0">Students submit complaint titles and descriptions via the intuitive portal.</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card h-100 p-4 border-0 shadow-sm">
+                <div class="stat-icon-box bg-info-light text-info mx-auto mb-3">
+                    <i class="bi bi-cpu"></i>
+                </div>
+                <h5 class="fw-bold">2. NLP & ML Pipeline</h5>
+                <p class="small text-muted mb-0">Text is cleaned, lemmatized, vectorised via TF-IDF, and classified into 12 categories.</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card h-100 p-4 border-0 shadow-sm">
+                <div class="stat-icon-box bg-warning-light text-warning mx-auto mb-3">
+                    <i class="bi bi-speedometer"></i>
+                </div>
+                <h5 class="fw-bold">3. Smart Triage</h5>
+                <p class="small text-muted mb-0">VADER analyzes sentiment and priority heuristics automatically assign High, Medium, or Low priority.</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card h-100 p-4 border-0 shadow-sm">
+                <div class="stat-icon-box bg-success-light text-success mx-auto mb-3">
+                    <i class="bi bi-check2-circle"></i>
+                </div>
+                <h5 class="fw-bold">4. Action & Resolution</h5>
+                <p class="small text-muted mb-0">Administrators track status, respond to students, and view real-time department analytics.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Architecture & Categories Overview -->
+<div class="my-5 p-4 bg-white rounded-3 border">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+            <h3 class="fw-bold mb-3">12 Automated College Categories</h3>
+            <p class="text-muted">The machine learning classifier accurately routes complaints across all campus units:</p>
+            <div class="row g-2 small">
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>Academics</div>
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>Examination</div>
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>IT & Wi-Fi</div>
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>Infrastructure</div>
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>Classroom</div>
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>Library</div>
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>Canteen</div>
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>Hostel</div>
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>Transport</div>
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>Administration</div>
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>Fees & Accounts</div>
+                <div class="col-6"><i class="bi bi-check2 text-primary me-1"></i>Other</div>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-end">
+            <div class="card p-3 bg-light border-0 text-start">
+                <h6 class="fw-bold text-dark"><i class="bi bi-code-slash text-primary me-2"></i>NLP Technical Architecture</h6>
+                <ul class="list-unstyled small text-muted mb-0">
+                    <li class="mb-1">&bull; <strong>Text Cleaning:</strong> Lowercasing, URL/Regex filtering, Tokenization</li>
+                    <li class="mb-1">&bull; <strong>Feature Extraction:</strong> WordNet Lemmatization + TF-IDF (1-2 N-grams)</li>
+                    <li class="mb-1">&bull; <strong>Classification:</strong> Multinomial Logistic Regression / Linear SVM</li>
+                    <li class="mb-1">&bull; <strong>Sentiment:</strong> NLTK VADER Intensity Scoring (-1.0 to +1.0)</li>
+                    <li>&bull; <strong>Storage:</strong> SQLAlchemy ORM (SQLite / PostgreSQL)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

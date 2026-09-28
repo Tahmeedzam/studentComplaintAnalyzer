@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}My Complaints - Smart Student Complaint Analyzer{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+    <div>
+        <h2 class="fw-bold mb-1">My Submitted Complaints</h2>
+        <p class="text-muted small mb-0">Search, filter, and track all your grievances submitted to the campus administration.</p>
+    </div>
+    <a href="{{ url_for('student.new_complaint') }}" class="btn btn-primary shadow-sm">
+        <i class="bi bi-plus-circle-fill me-1"></i>New Complaint
+    </a>
+</div>
+
+<!-- Search & Filter Controls -->
+<div class="card p-3 mb-4 border-0 shadow-sm">
+    <form method="GET" action="{{ url_for('student.complaints') }}" class="row g-2 align-items-center">
+        <!-- Search Keyword -->
+        <div class="col-md-4 col-12">
+            <div class="input-group input-group-sm">
+                <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control" name="search" value="{{ search or '' }}" placeholder="Search title or description...">
+            </div>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="col-md-3 col-sm-4 col-12">
+            <select class="form-select form-select-sm" name="category">
+                <option value="">All Categories</option>
+                {% for cat in categories %}
+                    <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Priority Filter -->
+        <div class="col-md-2 col-sm-4 col-6">
+            <select class="form-select form-select-sm" name="priority">
+                <option value="">All Priorities</option>
+                <option value="High" {% if selected_priority == 'High' %}selected{% endif %}>High</option>
+                <option value="Medium" {% if selected_priority == 'Medium' %}selected{% endif %}>Medium</option>
+                <option value="Low" {% if selected_priority == 'Low' %}selected{% endif %}>Low</option>
+            </select>
+        </div>
+
+        <!-- Status Filter -->
+        <div class="col-md-2 col-sm-4 col-6">
+            <select class="form-select form-select-sm" name="status">
+                <option value="">All Statuses</option>
+                <option value="Pending" {% if selected_status == 'Pending' %}selected{% endif %}>Pending</option>
+                <option value="In Progress" {% if selected_status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                <option value="Resolved" {% if selected_status == 'Resolved' %}selected{% endif %}>Resolved</option>
+                <option value="Rejected" {% if selected_status == 'Rejected' %}selected{% endif %}>Rejected</option>
+            </select>
+        </div>
+
+        <!-- Submit & Reset -->
+        <div class="col-md-1 col-12 text-end d-flex gap-1">
+            <button type="submit" class="btn btn-primary btn-sm w-100"><i class="bi bi-filter"></i></button>
+            <a href="{{ url_for('student.complaints') }}" class="btn btn-outline-secondary btn-sm" title="Clear Filters"><i class="bi bi-arrow-counterclockwise"></i></a>
+        </div>
+    </form>
+</div>
+
+<!-- Complaints Table -->
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        {% if complaints %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-3">ID</th>
+                            <th>Complaint Details</th>
+                            <th>Category & Dept</th>
+                            <th>NLP Priority</th>
+                            <th>Sentiment</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th class="text-end pe-3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in complaints %}
+                            <tr>
+                                <td class="ps-3 fw-bold text-muted">#{{ c.id }}</td>
+                                <td>
+                                    <div class="fw-semibold text-dark">{{ c.title }}</div>
+                                    <div class="small text-muted text-truncate" style="max-width: 250px;">{{ c.description }}</div>
+                                    <div class="mt-1">
+                                        {% for kw in c.keywords_list %}
+                                            <span class="keyword-tag py-0 px-2 small">{{ kw }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="small fw-semibold text-dark">{{ c.category }}</div>
+                                    <div class="small text-muted"><i class="bi bi-building me-1"></i>{{ c.department }}</div>
+                                </td>
+                                <td>
+                                    <span class="badge {{ c.priority|priority_badge }}">
+                                        {{ c.priority }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge {{ c.sentiment|sentiment_badge }} small">
+                                        {{ c.sentiment }} ({{ c.sentiment_score }})
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge {{ c.status|status_badge }}">
+                                        {{ c.status }}
+                                    </span>
+                                </td>
+                                <td class="small text-muted">
+                                    {{ c.created_at.strftime('%Y-%m-%d') }}
+                                </td>
+                                <td class="text-end pe-3">
+                                    <a href="{{ url_for('student.complaint_detail', complaint_id=c.id) }}" class="btn btn-sm btn-light border">
+                                        View <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="text-center py-5">
+                <i class="bi bi-search text-muted display-4 mb-3 d-block"></i>
+                <h5 class="fw-bold text-dark">No matching complaints found</h5>
+                <p class="text-muted small">Try adjusting your search criteria or submit a new grievance.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
