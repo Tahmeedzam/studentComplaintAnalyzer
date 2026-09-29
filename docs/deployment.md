@@ -1,59 +1,47 @@
 # Deployment Guide - Smart Student Complaint Analyzer
 
-This guide details step-by-step instructions for deploying the **Smart Student Complaint Analyzer** to production cloud platforms like **Render**, **Railway**, or **Heroku**, using **Gunicorn** and **PostgreSQL**.
+This guide details step-by-step instructions for deploying the **Smart Student Complaint Analyzer** to **Vercel** (Quickest & Free) as well as **Render** using **Supabase PostgreSQL**.
 
 ---
 
-## 1. Prerequisites
-- A GitHub repository with this codebase pushed.
-- A free cloud hosting account (e.g., [Render.com](https://render.com)).
-- Pre-trained model artifacts (`models/complaint_classifier.pkl` & `models/tfidf_vectorizer.pkl`) included or generated during build.
+## ⚡ Option 1: Deploy to Vercel (Quickest & Recommended)
 
----
+Vercel provides the fastest, serverless hosting for Python Flask web applications.
 
-## 2. Deploying to Render (Recommended Free/Low-Cost Tier)
+### Prerequisites:
+1. Your project is pushed to a **GitHub repository**.
+2. A **Supabase PostgreSQL** database is set up (see [`docs/supabase_setup.md`](supabase_setup.md)).
 
-### Step 1: Create a PostgreSQL Database on Render
-1. Log in to your Render Dashboard.
-2. Click **New +** $\rightarrow$ **PostgreSQL**.
-3. Name your database (e.g., `smartcampus-db`).
-4. Select the Free tier and click **Create Database**.
-5. Copy the **Internal Database URL** (or External URL).
+### Step 1: Import Project in Vercel
+1. Go to [https://vercel.com](https://vercel.com) and log in with your GitHub account.
+2. Click **"Add New..."** $\rightarrow$ **"Project"**.
+3. Select your `StudentComplaintAnalyzer` repository and click **"Import"**.
 
-### Step 2: Create a Web Service
-1. Click **New +** $\rightarrow$ **Web Service**.
-2. Connect your GitHub repository.
-3. Configure the service settings:
-   - **Name**: `student-complaint-analyzer`
-   - **Environment**: `Python 3`
-   - **Region**: Closest to your users
-   - **Branch**: `main`
-   - **Build Command**:
-     ```bash
-     pip install -r requirements.txt && python ml/train_model.py && python scripts/seed_database.py
-     ```
-   - **Start Command**:
-     ```bash
-     gunicorn app:app
-     ```
-
-### Step 3: Set Environment Variables
-Under the **Environment** tab, add the following key-value pairs:
+### Step 2: Configure Environment Variables
+Before clicking deploy, expand the **"Environment Variables"** section and add:
 
 | Key | Example Value | Description |
 |---|---|---|
-| `FLASK_ENV` | `production` | Enables production configurations |
-| `SECRET_KEY` | `generate-a-strong-random-secret-key` | Session cryptographic encryption |
-| `DATABASE_URL` | `postgresql://user:pass@host:5432/dbname` | Render PostgreSQL connection string |
-| `PYTHONUNBUFFERED` | `1` | Stream console logs in real time |
+| `SECRET_KEY` | `smartcampus-super-secret-key-2026` | Flask session encryption key |
+| `FLASK_ENV` | `production` | Enables production mode |
+| `DATABASE_URL` | `postgresql://postgres:[PASSWORD]@db.[REF].supabase.co:5432/postgres?sslmode=require` | Your Supabase connection string |
 
-4. Click **Deploy Web Service**.
-5. Once deployment completes, your application will be live at `https://your-service-name.onrender.com`.
+### Step 3: Deploy
+1. Click **"Deploy"**.
+2. Vercel will automatically read `vercel.json`, install `requirements.txt`, and deploy the Flask serverless backend in under 60 seconds!
+3. Your app is live at `https://your-project-name.vercel.app` 🎉.
 
 ---
 
-## 3. Database Migration: SQLite to PostgreSQL
-The application uses SQLAlchemy ORM which abstracts the underlying SQL dialect:
-- For **Local Development**: `DATABASE_URL` defaults to `sqlite:///instance/database.db`.
-- For **Production**: Set `DATABASE_URL` to your PostgreSQL URI (e.g., `postgresql://...`).
-- When the application boots, `db.create_all()` automatically provisions all tables in PostgreSQL.
+## 🚀 Option 2: Deploy to Render
+
+1. Log in to [https://render.com](https://render.com).
+2. Click **"New +"** $\rightarrow$ **"Web Service"** and connect your GitHub repo.
+3. Configure:
+   - **Environment**: `Python 3`
+   - **Build Command**: `pip install -r requirements.txt && python ml/train_model.py`
+   - **Start Command**: `gunicorn app:app`
+4. Add Environment Variables:
+   - `SECRET_KEY`: `smartcampus-super-secret-key-2026`
+   - `DATABASE_URL`: `postgresql://postgres:[PASSWORD]@db.[REF].supabase.co:5432/postgres?sslmode=require`
+5. Click **"Deploy Web Service"**.

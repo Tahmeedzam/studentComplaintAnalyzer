@@ -1,5 +1,7 @@
 """Text preprocessing, acronym normalization, and keyword extraction utilities for the NLP pipeline."""
 
+import os
+import tempfile
 import re
 import string
 import nltk
@@ -16,10 +18,21 @@ def ensure_nltk_resources():
     global _NLTK_DOWNLOADED
     if _NLTK_DOWNLOADED:
         return
+        
+    import tempfile
+    nltk_data_dir = os.path.join(tempfile.gettempdir(), 'nltk_data')
+    try:
+        os.makedirs(nltk_data_dir, exist_ok=True)
+    except Exception:
+        pass
+        
+    if nltk_data_dir not in nltk.data.path:
+        nltk.data.path.append(nltk_data_dir)
+
     resources = ['punkt', 'stopwords', 'wordnet', 'omw-1.4', 'vader_lexicon', 'punkt_tab']
     for res in resources:
         try:
-            nltk.download(res, quiet=True)
+            nltk.download(res, download_dir=nltk_data_dir, quiet=True)
         except Exception:
             pass
     _NLTK_DOWNLOADED = True

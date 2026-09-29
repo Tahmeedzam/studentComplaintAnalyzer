@@ -1,4 +1,5 @@
 import os
+import tempfile
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -15,7 +16,17 @@ class Config:
     if db_url and db_url.startswith('postgres://'):
         db_url = db_url.replace('postgres://', 'postgresql://', 1)
         
-    SQLALCHEMY_DATABASE_URI = db_url or f"sqlite:///{BASE_DIR / 'instance' / 'database.db'}"
+    if db_url:
+        SQLALCHEMY_DATABASE_URI = db_url
+    else:
+        # Check if running in a serverless/read-only environment (e.g., Vercel / AWS Lambda)
+        is_serverless = bool(os.environ.get('VERCEL') or os.environ.get('AWS_LAMBDA_FUNCTION_NAME'))
+        if is_serverless:
+            sqlite_path = Path(tempfile.gettempdir()) / 'database.db'
+        else:
+            sqlite_path = BASE_DIR / 'instance' / 'database.db'
+        SQLALCHEMY_DATABASE_URI = f"sqlite:///{sqlite_path}"
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Enable connection health check / pool pre-ping for cloud databases like Supabase
@@ -31,10 +42,14 @@ class Config:
     VECTORIZER_PATH = MODELS_DIR / 'tfidf_vectorizer.pkl'
     DATASET_PATH = DATA_DIR / 'complaints_dataset.csv'
 
-    # Ensure required runtime directories exist
-    os.makedirs(BASE_DIR / 'instance', exist_ok=True)
-    os.makedirs(MODELS_DIR, exist_ok=True)
-    os.makedirs(DATA_DIR, exist_ok=True)
+    # Safely ensure required runtime directories exist
+    try:
+        os.makedirs(BASE_DIR / 'instance', exist_ok=True)
+        os.makedirs(MODELS_DIR, exist_ok=True)
+        os.makedirs(DATA_DIR, exist_ok=True)
+    except Exception:
+        # Ignore on read-only serverless filesystems (e.g., Vercel)
+        pass
 
 
 class DevelopmentConfig(Config):
