@@ -24,7 +24,11 @@ def login():
             flash('Please enter both email address and password.', 'warning')
             return render_template('login.html', email=email)
 
-        user = User.query.filter_by(email=email).first()
+        try:
+            user = User.query.filter_by(email=email).first()
+        except Exception as e:
+            flash(f'Database connection error: Unable to authenticate. Please check database settings or try again.', 'danger')
+            return render_template('login.html', email=email)
 
         if not user or not user.check_password(password):
             flash('Invalid email or password. Please verify your credentials.', 'danger')
