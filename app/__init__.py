@@ -1,13 +1,13 @@
 """Flask Application Factory and Extensions Initialization."""
 
 import os
+from pathlib import Path
 from flask import Flask, render_template, jsonify
 from flask_login import LoginManager
 from flask_cors import CORS
 from config import config_by_name
 from app.models import db, User
 from app.utils import format_priority_badge, format_status_badge, format_sentiment_badge
-from ml.preprocessing import ensure_nltk_resources
 
 login_manager = LoginManager()
 
@@ -15,12 +15,14 @@ login_manager = LoginManager()
 def create_app(config_name=None):
     """Application factory for Smart Student Complaint Analyzer."""
     if config_name is None:
-        config_name = os.environ.get('FLASK_ENV', 'development')
+        config_name = os.environ.get('FLASK_ENV', 'production')
+
+    base_dir = Path(__file__).resolve().parent.parent
 
     app = Flask(
         __name__,
-        template_folder='../templates',
-        static_folder='../static'
+        template_folder=str(base_dir / 'templates'),
+        static_folder=str(base_dir / 'static')
     )
     
     # Load configuration
@@ -38,7 +40,10 @@ def create_app(config_name=None):
 
     @login_manager.user_loader
     def load_user(user_id):
-        return db.session.get(User, int(user_id))
+        try:
+            return db.session.get(User, int(user_id))
+        except Exception:
+            return None
 
     # Register Jinja context filters & global helpers
     app.jinja_env.filters['priority_badge'] = format_priority_badge
@@ -71,11 +76,30 @@ def create_app(config_name=None):
     def forbidden_error(e):
         return render_template('404.html', message="Access Forbidden"), 403
 
-    # Safe NLTK initializer
-    with app.app_context():
-        try:
-            db.create_all()
-        except Exception as e:
-            app.logger.warning(f"Database table initialization warning: {e}")
+    # Initialize tables and ensure admin user exists in production/development
+    if not app.config.get('TESTING'):
+        with app.app_context():
+            try:
+                db.create_all()
+                if not User.query.filter_by(email='admin@smartcampus.com').first():
+                    admin = User(
+                        name="Campus Administrator",
+                        email="admin@smartcampus.com",
+                        role="admin"
+                    )
+                    admin.set_password("Admin@123")
+                    db.session.add(admin)
+                    
+                    demo_student = User(
+                        name="Aarav Sharma",
+                        email="student@smartcampus.com",
+                        role="student"
+                    )
+                    demo_student.set_password("Student@123")
+                    db.session.add(demo_student)
+                    
+                    db.session.commit()
+            except Exception as e:
+                app.logger.warning(f"Database table initialization warning: {e}")
             
     return app

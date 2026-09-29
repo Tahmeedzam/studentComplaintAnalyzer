@@ -9,17 +9,15 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
-# Safe resource loader
 _NLTK_DOWNLOADED = False
 
 
 def ensure_nltk_resources():
-    """Ensure all required NLTK corpora and tokenizers are downloaded safely."""
+    """Ensure required NLTK corpora and tokenizers are downloaded safely on demand."""
     global _NLTK_DOWNLOADED
     if _NLTK_DOWNLOADED:
         return
         
-    import tempfile
     nltk_data_dir = os.path.join(tempfile.gettempdir(), 'nltk_data')
     try:
         os.makedirs(nltk_data_dir, exist_ok=True)
@@ -38,26 +36,26 @@ def ensure_nltk_resources():
     _NLTK_DOWNLOADED = True
 
 
-ensure_nltk_resources()
+# Standard stop words with comprehensive static fallback (Zero network dependency)
+STOP_WORDS = {
+    'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're",
+    'he', 'him', 'his', 'himself', 'she', 'her', 'it', 'its', 'they', 'them',
+    'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'is',
+    'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having',
+    'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or',
+    'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about',
+    'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above',
+    'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under',
+    'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why',
+    'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some',
+    'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very',
+    's', 't', 'can', 'will', 'just', 'don', "don't", 'should', "should've", 'now'
+}
 
-# Standard stop words with safe fallback
 try:
-    STOP_WORDS = set(stopwords.words('english'))
+    STOP_WORDS = STOP_WORDS.union(set(stopwords.words('english')))
 except Exception:
-    STOP_WORDS = {
-        'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're",
-        'he', 'him', 'his', 'himself', 'she', 'her', 'it', 'its', 'they', 'them',
-        'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'is',
-        'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having',
-        'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or',
-        'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about',
-        'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above',
-        'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under',
-        'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why',
-        'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some',
-        'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very',
-        's', 't', 'can', 'will', 'just', 'don', "don't", 'should', "should've", 'now'
-    }
+    pass
 
 # Expanded conversational, domain, and filler stop words
 DOMAIN_STOPWORDS = {
@@ -73,10 +71,18 @@ COMBINED_STOPWORDS = STOP_WORDS.union(DOMAIN_STOPWORDS)
 # Meaningful 2-letter campus acronyms that should NOT be filtered out
 IMPORTANT_SHORT_TOKENS = {'ac', 'ip', 'os', 'ai', 'ml', 'id', 'ro', 'it', 'tv', 'ui'}
 
-try:
-    LEMMATIZER = WordNetLemmatizer()
-except Exception:
-    LEMMATIZER = None
+_LEMMATIZER = None
+
+
+def get_lemmatizer():
+    """Lazy initialize and cache the WordNetLemmatizer."""
+    global _LEMMATIZER
+    if _LEMMATIZER is None:
+        try:
+            _LEMMATIZER = WordNetLemmatizer()
+        except Exception:
+            _LEMMATIZER = None
+    return _LEMMATIZER
 
 
 def normalize_acronyms_and_slang(text: str) -> str:
@@ -159,7 +165,8 @@ def remove_stopwords(tokens: list) -> list:
 
 def lemmatize_tokens(tokens: list) -> list:
     """Lemmatize tokens to their base morphological forms."""
-    if not LEMMATIZER:
+    lemmatizer = get_lemmatizer()
+    if not lemmatizer:
         return tokens
     lemmatized = []
     for token in tokens:
@@ -167,7 +174,7 @@ def lemmatize_tokens(tokens: list) -> list:
             lemmatized.append(token.lower())
             continue
         try:
-            lemmatized.append(LEMMATIZER.lemmatize(token))
+            lemmatized.append(lemmatizer.lemmatize(token))
         except Exception:
             lemmatized.append(token)
     return lemmatized
