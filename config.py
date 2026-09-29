@@ -13,12 +13,17 @@ class Config:
     
     # SQLAlchemy database configuration
     db_url = os.environ.get('DATABASE_URL')
-    # Heroku/Render may give postgres:// — upgrade to postgresql://
+    # Heroku/Render may give postgres:// — upgrade to postgresql+psycopg2://
     if db_url and db_url.startswith('postgres://'):
         db_url = db_url.replace('postgres://', 'postgresql+psycopg2://', 1)
     # Force psycopg2 dialect explicitly (prevents SQLAlchemy from trying psycopg3)
-    if db_url and db_url.startswith('postgresql://'):
+    elif db_url and db_url.startswith('postgresql://'):
         db_url = db_url.replace('postgresql://', 'postgresql+psycopg2://', 1)
+
+    # Ensure sslmode=require is present for cloud PostgreSQL (Supabase / Render)
+    if db_url and 'postgresql' in db_url and 'sslmode' not in db_url:
+        separator = '&' if '?' in db_url else '?'
+        db_url = f"{db_url}{separator}sslmode=require"
 
     if db_url:
         SQLALCHEMY_DATABASE_URI = db_url
